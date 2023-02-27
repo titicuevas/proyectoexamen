@@ -9,7 +9,7 @@ require '../vendor/autoload.php';
 try {
     $id = obtener_get('id');
     $articulo = Articulo::obtener($id);
-
+    $categoria = obtener_get('categoria');
     if ($id === null) {
         return volver();
     }
@@ -28,4 +28,4 @@ try {
     // TODO: mostrar mensaje de error en un Alert
 }
 
-volver();
+header("Location: /index.php?categoria=$categoria");

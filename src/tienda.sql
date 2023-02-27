@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS categorias CASCADE;
 
 CREATE TABLE categorias(
 id bigserial PRIMARY KEY,
-descripcion varchar(255) NOT NULL
+nombre varchar(255) NOT NULL
 
 );
 
@@ -48,7 +48,7 @@ CREATE TABLE articulos_facturas (
 
 
 -- Carga inicial de datos de prueba:
-INSERT INTO categorias(id,descripcion)
+INSERT INTO categorias(id,nombre)
 VALUES('1','PC'),
     ('2','Merienda');
 
