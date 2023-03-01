@@ -14,9 +14,8 @@
             oculto.setAttribute('value', id);
         }
     </script>
-    <title>Listado de artículos</title>
+    <title>Crear un nuevo producto</title>
 </head>
-
 <body>
     <?php
     require '../../vendor/autoload.php';
@@ -53,7 +52,9 @@
                             <td class="py-4 px-6"><?= hh($fila['precio']) ?></td>
                             <td class="py-4 px-6"><?= hh($fila['categoria_id']) ?></td>
                             <td class="px-6 text-center">
-                                <?php $fila_id = hh($fila['id']) ?>
+                                <?php $fila_id = hh($fila['id']) ;
+                                        var_dump($fila_id);
+                                ?>
                                 <a href="/admin/editar.php?id=<?= $fila_id ?>"><button class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">Editar</button></a>
                                 <form action="/admin/borrar.php" method="POST" class="inline">
                                     <input type="hidden" name="id" value="<?= $fila_id ?>">
@@ -91,7 +92,9 @@
             </div>
         </div>
     </div>
+    
     <script src="/js/flowbite/flowbite.js"></script>
+    <a href="/admin/create.php"><button class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">Crear nuevo Producto</button></a>
 </body>
 
 </html>

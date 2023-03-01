@@ -1,9 +1,6 @@
 <?php
-session_start();
 
-require '../../src/auxiliar.php';
 
-$id = obtener_post('id');
 
 // if (!comprobar_csrf()) {
 //     return volver_admin();
@@ -20,6 +17,6 @@ $pdo = conectar();
 $sent = $pdo->prepare("UPDATE FROM articulos WHERE id = :id");
 $sent->execute([':id' => $id]);
 
-$_SESSION['exito'] = 'El artículo se ha borrado correctamente.';
+$_SESSION['exito'] = 'El artículo se ha Actualizado correctamente.';
 
 volver_admin();

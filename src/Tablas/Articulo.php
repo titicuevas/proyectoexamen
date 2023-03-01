@@ -53,4 +53,47 @@ class Articulo extends Modelo
     public function getCategoria(){
         return $this->categoria_id;
     }
+
+    public function getIds(){
+        return $this->id;
+    }
+
+    public static function modificar($id, $codigo, $descripcion, $precio, $stock, $categoria_id)
+    {
+        $pdo = conectar();
+        $sent = $pdo->prepare("UPDATE articulos
+                                SET codigo= :codigo,
+                                descripcion= :descripcion,
+                                precio= :precio,
+                                stock= :stock,
+                                categoria_id= :categoria_id
+                                WHERE id = :id");
+        $sent->execute([
+            ':id' => $id,
+            ':codigo' => $codigo,
+            ':descripcion'=> $descripcion,
+            ':precio'=> $precio,
+            ':stock'=> $stock,
+            ':categoria_id'=>$categoria_id
+        ]);
+    }
+
+    public static function crear($codigo, $descripcion, $precio, $stock, $categoria_id)
+    {
+        $pdo = conectar();
+        $sent = $pdo->prepare("INSERT INTO articulos (codigo, descripcion, precio, stock, categoria_id)
+                                VALUES (:codigo, 
+                                        :descripcion,
+                                        :precio,
+                                        :stock,
+                                        :categoria_id)");
+        $sent->execute([
+            ':codigo' => $codigo,
+            ':descripcion'=> $descripcion,
+            ':precio'=> $precio,
+            ':stock'=> $stock,
+            ':categoria_id'=>$categoria_id
+        ]);
+    }
+
 }
